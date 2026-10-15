@@ -22,15 +22,24 @@ public class SandwichShop {
         System.out.print("What is your age: ");
         int age = scanner.nextInt();
 
+        double regularCost;
+        double largeCost;
+
         if (age <= 17){
             discount = 0.1;
+            regularCost = regularPrice * discount - regularPrice;
+            largeCost = largePrice * discount - largePrice;
         } else if (age >= 65) {
             discount = 0.2;
+            regularCost = regularPrice * discount - regularPrice;
+            largeCost = largePrice * discount - largePrice;
         } else {
             System.out.println("No discount");
+            regularCost = regularPrice;
+            largeCost = largePrice;
         }
-        double cost = regularPrice * discount;
-        System.out.println("That will be $" + cost);
+        System.out.println("That will be $" + Math.abs(regularCost));
+        System.out.println("That will be $" + Math.abs(largeCost));
 
 
     }
