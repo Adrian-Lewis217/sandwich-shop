@@ -25,7 +25,7 @@ public class SandwichShop {
         double regularCost;
         double largeCost;
 
-        if (age <= 17){
+        if (age <= 17) {
             discount = 0.1;
             regularCost = regularPrice * discount - regularPrice;
             largeCost = largePrice * discount - largePrice;
@@ -38,6 +38,14 @@ public class SandwichShop {
             regularCost = regularPrice;
             largeCost = largePrice;
         }
+
+        boolean isLoaded;
+
+        System.out.print("Would you like to loaded your sandwich: ");
+        isLoaded = scanner.nextBoolean();
+
+
+
         System.out.println("That will be $" + Math.abs(regularCost));
         System.out.println("That will be $" + Math.abs(largeCost));
 
