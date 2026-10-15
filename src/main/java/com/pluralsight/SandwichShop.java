@@ -23,9 +23,9 @@ public class SandwichShop {
         int age = scanner.nextInt();
 
         if (age <= 17){
-            discount = 0.10;
+            discount = 0.1;
         } else if (age >= 65) {
-            discount = 0.20;
+            discount = 0.2;
         } else {
             System.out.println("No discount");
         }
