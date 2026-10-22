@@ -6,49 +6,48 @@ public class SandwichShop {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("What size would you like: ");
-        String size = scanner.nextLine();
+        System.out.print("What size would you like (1 for Regular, 2 for large): ");
+        int size = scanner.nextInt();
+        scanner.nextLine();
 
-        double regularPrice = 0;
-        double largePrice = 0;
+        double basePrice;
 
-        if (size.equalsIgnoreCase("Regular")) {
-            regularPrice = 5.45;
+        if (size == 1) {
+            basePrice = 5.45;
+        } else if (size == 2) {
+            basePrice = 8.95;
         } else {
-            largePrice = 8.95;
+            System.out.println("Invalid sandwich size");
+            return;
         }
-        double discount = 0;
+
+        System.out.println("Would you like it loaded? (yes/no): ");
+        String loadedAnswer = scanner.nextLine();
+
+        if(loadedAnswer.equalsIgnoreCase("yes")){
+            if(size == 1){
+                basePrice = basePrice + 1.00;
+            } else {
+                basePrice = basePrice + 1.75;
+            }
+        }
 
         System.out.print("What is your age: ");
         int age = scanner.nextInt();
 
-        double regularCost;
-        double largeCost;
+        double discount = 0.0;
 
         if (age <= 17) {
             discount = 0.1;
-            regularCost = regularPrice * discount - regularPrice;
-            largeCost = largePrice * discount - largePrice;
         } else if (age >= 65) {
             discount = 0.2;
-            regularCost = regularPrice * discount - regularPrice;
-            largeCost = largePrice * discount - largePrice;
-        } else {
-            System.out.println("No discount");
-            regularCost = regularPrice;
-            largeCost = largePrice;
         }
 
-        boolean isLoaded;
+        double finalPrice = basePrice * (1 - discount);
 
-        System.out.print("Would you like to loaded your sandwich: ");
-        isLoaded = scanner.nextBoolean();
+        System.out.printf("Cost of sandwich: $%.2f%n", finalPrice);
 
-
-
-        System.out.println("That will be $" + Math.abs(regularCost));
-        System.out.println("That will be $" + Math.abs(largeCost));
-
+        scanner.close();
 
     }
 }
